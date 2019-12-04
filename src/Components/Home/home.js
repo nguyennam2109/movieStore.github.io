@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 
 import Slider from './slider';
+import ProductView from '../Container/product';
 
 class Home extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class Home extends React.Component {
       <>
         <Slider />
         <h2>This Is Home</h2>
+        <ProductView />
       </>
     );
   }

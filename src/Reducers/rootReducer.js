@@ -1,6 +1,6 @@
 console.log("Call Root Reducer")
 import { combineReducers } from 'redux';
-import simpleReducer from './reducer';
+import Reducer from './reducer';
 export default combineReducers({
- simpleReducer
+    Reducer
 });
