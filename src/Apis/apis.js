@@ -2,16 +2,16 @@ import {fetchProductsPending, fetchProductsSuccess, fetchProductsError} from '..
 
 function fetchProducts() {
     return dispatch => {
-        dispatch(fetchProductsPending());
-        
-        fetch('https://www.sendo.vn/m/wap_v2/online-sale/verify-products?p=1&s=20')
+        fetchProductsPending();
+        console.log("fetchProductsPending")
+        fetch('https://mapi.sendso.vn/mob/product/cat/phu-kien-cong-nghe/phu-kien-may-tinh-laptop/usb/?p=2')
         .then(res => res.json())
         .then(res => {
             if(res.error) {
                 throw(res.error);
             }
-            dispatch(fetchProductsSuccess(res.products));
-            console.log(res)
+            dispatch(fetchProductsSuccess(res.data));
+            console.log("APIfetchProductsSuccess",res.data)
             return res.products;
         })
         .catch(error => {

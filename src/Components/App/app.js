@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import simpleAction, { VisibilityFilters } from '../../Actions/commonActions';
 import Layout from '../layout'
 import "./app.css";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 class App extends React.Component {
   constructor(props) {

@@ -4,32 +4,35 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import fetchProductsAction from '../../Apis/apis';
-import {getProductsError, getProducts, getProductsPending} from '../../Reducers/reducer';
-class ProductView extends Component {
+import { getProductsError, getProducts, getProductsPending } from '../../Reducers/reducer';
+import Loader from 'react-loader-spinner';
+
+class ProductView extends React.Component {
     constructor(props) {
         super(props);
+        this.shouldComponentRender = this.shouldComponentRender.bind(this);
     }
 
-    componentWillMount() {
-        const {fetchProducts} = this.props;
+    componentDidMount() {
+        const { fetchProducts } = this.props;
         fetchProducts();
-        
+        console.log("fetchProducts",this.props)
     }
-
     shouldComponentRender() {
-        const {pending} = this.props;
-        if(this.pending === false) return false;
+        const { pending } = this.props;
+        console.log(this.props)
+        if (this.pending === false) return false;
         // more tests
         return true;
     }
 
     render() {
-        const {products, error, pending} = this.props;
-        console.log(this.props)
-        // if(!this.shouldComponentRender()) return <LoadingSpinner />
-
+        const { products, error, pending } = this.props;
+        
         return (
             <div className='product-list-wrapper'>
+                {pending && <Loader type="Bars" color="#00BFFF" height={80} width={80} />}
+                <div>{products}</div>
                 {error && <span className='product-list-error'>{error}</span>}
             </div>
         )
@@ -50,4 +53,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ProductView );
+)(ProductView);

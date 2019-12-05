@@ -8,6 +8,7 @@ const simpleAction = () => dispatch => {
 }
 
 export const fetchProductsPending = () => dispatch => {
+    console.log("fetchProductsPendingACTION")
     dispatch({
         type: 'FETCH_PRODUCTS_PENDING'
     })

@@ -12,18 +12,20 @@ export default (state = initialState, action) => {
       return {
         result: action.payload
       }
-    case FETCH_PRODUCTS_PENDING:
+    case 'FETCH_PRODUCTS_PENDING':
+        console.log("fetchProductsPendingREDDUCER")
       return {
         ...state,
         pending: true
       }
-    case FETCH_PRODUCTS_SUCCESS:
+    case 'FETCH_PRODUCTS_SUCCESS':
+      console.log("FETCH_PRODUCTS_SUCCESS",action)
       return {
         ...state,
         pending: false,
         products: action.payload
       }
-    case FETCH_PRODUCTS_ERROR:
+    case 'FETCH_PRODUCTS_ERROR':
       return {
         ...state,
         pending: false,
@@ -33,6 +35,6 @@ export default (state = initialState, action) => {
       return state
   }
 }
-export const getProducts = state => state.products;
-export const getProductsPending = state => state.pending;
+export const getProducts = state => state.products && console.log("products",state);
+export const getProductsPending = state => state.pending && console.log("pending",state);
 export const getProductsError = state => state.error;
