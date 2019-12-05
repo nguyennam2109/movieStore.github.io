@@ -13,8 +13,7 @@ class ProductView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            active: 1,
-            paginateItem: props.products || []
+            active: 1
         }
     }
 
@@ -23,15 +22,20 @@ class ProductView extends React.Component {
         fetchProducts();
     }
     renderPaginatePage() {
+        let items = [];
+        const productLength = this.props.products.length;
+        let totalPage = (productLength) % 10 === 0 ? (productLength) / 10 :((productLength) / 10) + 1  ;
+        for (let i = 1; i <= totalPage; i++) {
+            items.push(i);
+        }
+        console.log(items)
         return (
             <Pagination>
                 <Pagination.First />
                 <Pagination.Prev />
-                <Pagination.Item className={this.state.active && 'active'}>{1}</Pagination.Item>
-                <Pagination.Item >{2}</Pagination.Item>
-                <Pagination.Item >{3}</Pagination.Item>
-                <Pagination.Item >{4}</Pagination.Item>
-                <Pagination.Item >{5}</Pagination.Item>
+                {
+                    items.map((item,idx) => {return(<Pagination.Item size="lg" key={idx}>{item}</Pagination.Item>)})
+                }
                 <Pagination.Next />
                 <Pagination.Last />
             </Pagination>);
@@ -45,19 +49,19 @@ class ProductView extends React.Component {
                 <div className='product-list-wrapper'>
                     <CardDeck>
                         {products.length > 0 && products.map((item, idx) => idx < 6 &&
-                                <Card style={{ margin: '10px', minWidth: '310px' }} key={idx}>
-                                    <Card.Img variant="top" src={item.img_url} />
-                                    <Card.Body>
-                                        <Card.Title>Card title</Card.Title>
-                                        <Card.Text>
-                                            This is a wider card with supporting text below as a natural lead-in to
-                                            additional content. This content is a little bit longer.
+                            <Card style={{ margin: '10px', minWidth: '310px' }} key={idx}>
+                                <Card.Img variant="top" src={item.img_url} />
+                                <Card.Body>
+                                    <Card.Title>Card title</Card.Title>
+                                    <Card.Text>
+                                        This is a wider card with supporting text below as a natural lead-in to
+                                        additional content. This content is a little bit longer.
                                         </Card.Text>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                        <small className="text-muted">Last updated 3 mins ago</small>
-                                    </Card.Footer>
-                                </Card>
+                                </Card.Body>
+                                <Card.Footer>
+                                    <small className="text-muted">Last updated 3 mins ago</small>
+                                </Card.Footer>
+                            </Card>
                         )}
                     </CardDeck>
                 </div>
