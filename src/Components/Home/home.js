@@ -16,10 +16,22 @@ class Home extends React.Component {
     return (
       <>
         <Slider />
-        <h2>This Is Home</h2>
-        <ProductView />
+        
+        <div className="container">
+          <div className="row">
+          <h2>This Is Home</h2>
+            <ProductView />
+          </div>
+        </div>
+
       </>
     );
   }
 }
-export default connect()(Home);
+const mapStateToProps = state => ({
+  ...state
+});
+const mapDispatchToProps = dispatch => ({
+  simpleAction: () => dispatch(simpleAction())
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

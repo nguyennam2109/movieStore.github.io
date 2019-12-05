@@ -2,9 +2,9 @@ import {fetchProductsPending, fetchProductsSuccess, fetchProductsError} from '..
 
 function fetchProducts() {
     return dispatch => {
-        fetchProductsPending();
+        dispatch(fetchProductsPending());
         console.log("fetchProductsPending")
-        fetch('https://mapi.sendso.vn/mob/product/cat/phu-kien-cong-nghe/phu-kien-may-tinh-laptop/usb/?p=2')
+        fetch('https://mapi.sendo.vn/mob/product/cat/phu-kien-cong-nghe/phu-kien-may-tinh-laptop/usb/?p=2')
         .then(res => res.json())
         .then(res => {
             if(res.error) {
@@ -12,7 +12,7 @@ function fetchProducts() {
             }
             dispatch(fetchProductsSuccess(res.data));
             console.log("APIfetchProductsSuccess",res.data)
-            return res.products;
+            return res.data;
         })
         .catch(error => {
             dispatch(fetchProductsError(error));

@@ -4,47 +4,78 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import fetchProductsAction from '../../Apis/apis';
-import { getProductsError, getProducts, getProductsPending } from '../../Reducers/reducer';
 import Loader from 'react-loader-spinner';
+import { stringify } from 'querystring';
+import { Card, CardDeck } from 'react-bootstrap';
+import Pagination from 'react-bootstrap/Pagination'
 
 class ProductView extends React.Component {
     constructor(props) {
         super(props);
-        this.shouldComponentRender = this.shouldComponentRender.bind(this);
+        this.state = {
+            active: 1,
+            paginateItem: props.products || []
+        }
     }
 
     componentDidMount() {
         const { fetchProducts } = this.props;
         fetchProducts();
-        console.log("fetchProducts",this.props)
     }
-    shouldComponentRender() {
-        const { pending } = this.props;
-        console.log(this.props)
-        if (this.pending === false) return false;
-        // more tests
-        return true;
-    }
-
-    render() {
-        const { products, error, pending } = this.props;
-        
+    renderPaginatePage() {
         return (
-            <div className='product-list-wrapper'>
-                {pending && <Loader type="Bars" color="#00BFFF" height={80} width={80} />}
-                <div>{products}</div>
-                {error && <span className='product-list-error'>{error}</span>}
-            </div>
+            <Pagination>
+                <Pagination.First />
+                <Pagination.Prev />
+                <Pagination.Item className={this.state.active && 'active'}>{1}</Pagination.Item>
+                <Pagination.Item >{2}</Pagination.Item>
+                <Pagination.Item >{3}</Pagination.Item>
+                <Pagination.Item >{4}</Pagination.Item>
+                <Pagination.Item >{5}</Pagination.Item>
+                <Pagination.Next />
+                <Pagination.Last />
+            </Pagination>);
+    }
+    render() {
+        const { pending, products, error } = this.props;
+        if (pending || products.length == 0) return <Loader type="Bars" color="#00BFFF" height={80} width={80} />
+        if (error) return <span className='product-list-error'>{error}</span>
+        return (
+            <>
+                <div className='product-list-wrapper'>
+                    <CardDeck>
+                        {products.length > 0 && products.map((item, idx) => idx < 6 &&
+                                <Card style={{ margin: '10px', minWidth: '310px' }} key={idx}>
+                                    <Card.Img variant="top" src={item.img_url} />
+                                    <Card.Body>
+                                        <Card.Title>Card title</Card.Title>
+                                        <Card.Text>
+                                            This is a wider card with supporting text below as a natural lead-in to
+                                            additional content. This content is a little bit longer.
+                                        </Card.Text>
+                                    </Card.Body>
+                                    <Card.Footer>
+                                        <small className="text-muted">Last updated 3 mins ago</small>
+                                    </Card.Footer>
+                                </Card>
+                        )}
+                    </CardDeck>
+                </div>
+                {this.renderPaginatePage()}
+            </>
         )
     }
 }
 
 
-const mapStateToProps = state => ({
-    error: getProductsError(state),
-    products: getProducts(state),
-    pending: getProductsPending(state)
-})
+const mapStateToProps = (state) => {
+    const { pending, products, error } = state.Reducer;
+    return {
+        pending: pending,
+        products: products,
+        error: error
+    }
+}
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     fetchProducts: fetchProductsAction

@@ -1,5 +1,8 @@
 console.log("Call ACTION")
-const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
+const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
+export const FETCH_PRODUCTS_PENDING   = 'FETCH_PRODUCTS_PENDING';
+export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
+export const FETCH_PRODUCTS_ERROR = 'FETCH_PRODUCTS_ERROR';
 const simpleAction = () => dispatch => {
     dispatch({
         type: 'SIMPLE_ACTION',
@@ -16,13 +19,13 @@ export const fetchProductsPending = () => dispatch => {
 export const fetchProductsSuccess = (products) => dispatch => {
     dispatch({
         type: 'FETCH_PRODUCTS_SUCCESS',
-        products: products
+        payload: products
     })
 }
 export const fetchProductsError = (error) => dispatch => {
     dispatch({
         type: 'FETCH_PRODUCTS_ERROR',
-        error: error
+        payload: error
     })
 }
 
