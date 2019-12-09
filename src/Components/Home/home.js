@@ -16,14 +16,8 @@ class Home extends React.Component {
     return (
       <>
         <Slider />
-        
-        <div className="container">
-          <div className="row">
           <h2>This Is Home</h2>
             <ProductView />
-          </div>
-        </div>
-
       </>
     );
   }
