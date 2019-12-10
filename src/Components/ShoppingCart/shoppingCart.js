@@ -8,9 +8,9 @@ class shoppingCart extends React.Component {
 
     render() {
         return (
-            <>
+            <div className="shopping" style={{ color: '#000' }}>
                 <h2>This Is shoppingCart Page</h2>
-            </>
+            </div>
         );
     }
 }

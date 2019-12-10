@@ -9,7 +9,7 @@ class Detail extends React.Component {
     render() {
         return (
             <>
-                <h2>This Is Detail</h2>
+                <h2 style={{ color: '#000' }}>This Is Detail</h2>
             </>
         );
     }

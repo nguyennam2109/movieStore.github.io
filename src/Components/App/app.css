@@ -1,3 +1,113 @@
 body{
     font-size: 14px;
+    color:#fff!important;
+}
+a{
+    position: relative;
+    overflow: hidden;
+    color:#fff!important;
+}
+a:hover{
+    text-decoration: none!important;
+    color: #ffc107!important;
+}
+nav {
+    background-color: #e5101d;
+}
+.dropdown a, .dropdown-menu a{
+    background-color: #fff!important;
+    color: #e5101d!important;
+}
+.my-btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    color: #ffc107;
+    border-color: #ffc107;
+    margin:auto;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.my-btn span{
+    padding: 4px;
+    margin: 3px;
+    background-color: #ffc107;
+    color: #000;
+}
+.my-btn span:hover{
+    color: #000;
+}
+.dropdown-menu a:after {
+    display: block;
+    position: absolute;
+    margin: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '.';
+    color: transparent;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    background: transparent;
+}
+button:hover{
+    background:none!important;
+    color:#ffc107dc!important;
+}
+
+.dropdown-menu a:hover:after {
+    color: #e5101ed5!important;
+    -webkit-animation: circle 1.5s ease-in forwards;
+}
+@-webkit-keyframes circle {
+    0% {
+      width: 1px;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      height: 1px;
+      z-index: -1;
+      background: #eee;
+      border-radius: 100%;
+    }
+    100% {
+      background: #aaa;
+      height: 5000%;
+      width: 5000%;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      border-radius: 0;
+    }
+  }
+.NavDropdownItem{
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
 }
