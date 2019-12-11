@@ -1,0 +1,51 @@
+.product-list-wrapper .card{
+    border: 1px solid #fff;
+    box-shadow: 0 0.5px 0 0 #ffffff inset, 0 1px 2px 0 rgb(236, 230, 230);
+}
+.product-list-wrapper .card:hover{
+    border: 1px solid #aaa;
+}
+/* star rate */
+.card-body{
+    position: relative;
+}
+.card-text{
+    margin-bottom: 2rem!important;
+}
+.card-text .rating{
+    position: absolute;
+    bottom: 0;
+}
+.rating span { float:right; position:relative; user-select: none;}
+.rating span input {
+    position:absolute;
+    top:0px;
+    left:0px;
+    opacity:0;
+}
+.rating span label {
+    display:inline-block;
+    width:30px;
+    height:30px;
+    text-align:center;
+    color:#FFF;
+    background:#ccc;
+    font-size:30px;
+    margin-right:2px;
+    line-height:30px;
+    border-radius:50%;
+    -webkit-border-radius:50%;
+}
+
+.rating span label:not(:checked), .rating span label:before {
+	content: "\f005";
+	font-size: 20px;
+}
+
+.rating span:hover ~ span label,
+.rating span:hover label,
+.rating span.checked label,
+.rating span.checked ~ span label,.rating input:checked + label {
+    background:#F90;
+    color:#FFF;
+}

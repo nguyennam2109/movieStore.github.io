@@ -28,7 +28,12 @@ export const fetchProductsError = (error) => dispatch => {
         payload: error
     })
 }
-
+export const addToCart = (id) => dispatch => {
+    dispatch({
+        type: 'ADD_TO_CART',
+        id : id 
+    })
+}
 export function generateUniqueId() {
     return Math.floor(new Date().getTime() * Math.random()) + "";
 }

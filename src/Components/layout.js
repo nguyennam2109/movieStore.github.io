@@ -23,6 +23,7 @@ class App extends React.Component {
         super(props);
     }
     render() {
+        console.log("layout",this.props)
         return (
             <Container>
                 <Router>
@@ -104,10 +105,12 @@ class App extends React.Component {
         );
     }
 }
-const mapStateToProps = state => ({
+const mapStateToProps = state => {
+    return { 
     ...state
-});
+    }
+}
 const mapDispatchToProps = dispatch => ({
-    simpleAction: () => dispatch(simpleAction())
+    addToCart: (id) => dispatch(addToCart(id))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(App);

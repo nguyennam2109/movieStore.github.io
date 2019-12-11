@@ -11,7 +11,6 @@ function fetchProducts() {
                 throw(res.error);
             }
             dispatch(fetchProductsSuccess(res.data));
-            console.log("APIfetchProductsSuccess",res.data)
             return res.data;
         })
         .catch(error => {

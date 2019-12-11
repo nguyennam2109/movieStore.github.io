@@ -9,7 +9,7 @@ import { stringify } from 'querystring';
 import { Card, CardDeck } from 'react-bootstrap';
 import Pagination from 'react-bootstrap/Pagination';
 import ProductItem from './productItems';
-
+import './product.css';
 class ProductView extends React.Component {
     constructor(props) {
         super(props);
@@ -48,25 +48,24 @@ class ProductView extends React.Component {
         if (pending || products.length == 0) return <Loader type="Bars" color="#00BFFF" height={80} width={80} />
         if (error) return <span className='product-list-error'>{error}</span>
         if (products.length > 0) {
-            let product_size = Math.floor(products.length / 7);
+            let product_size = Math.floor(products.length / 5);
             groups_products = products.map(function (item, idx) {
                 return idx % product_size === 0 ? products.slice(idx, idx + product_size) : null;
             }).filter((item) => item);
-            console.log(groups_products)
         }
         return (
             <>
-                <div className='product-list-wrapper'>
-                    {groups_products.map((items, idx) => (
+                <div className='product-list-wrapper' style={{backgroundColor:'#fff'}}>
+                    {groups_products.map((items, idx) => idx < 2 &&(
                         <div key={idx} className="col-md-12">
-                            <CardDeck>
+                            <CardDeck style={{margin:'5px'}}>
                                 <ProductItem items={items} />
                             </CardDeck>
 
                         </div>
                     ))}
                 </div>
-                {this.renderPaginatePage()}
+                {/* {this.renderPaginatePage()} */}
             </>
         )
     }
@@ -74,7 +73,7 @@ class ProductView extends React.Component {
 
 
 const mapStateToProps = (state) => {
-    const { pending, products, error } = state.Reducer;
+    const { pending, products, error } = state.products;
     return {
         pending: pending,
         products: products,

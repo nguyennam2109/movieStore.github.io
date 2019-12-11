@@ -18,16 +18,16 @@ export default (state = initialState, action) => {
         pending: true
       }
     case 'FETCH_PRODUCTS_SUCCESS':
-      // return {
-      //   ...state,
-      //   pending: false,
-      //   products: action.payload
-      // }
-      return Object.assign({
-          ...state,
-          pending: false,
-          products: action.payload
-        })
+      return {
+        ...state,
+        pending: false,
+        products: action.payload
+      }
+      // return Object.assign({
+      //     ...state,
+      //     pending: false,
+      //     products: action.payload
+      //   })
     case 'FETCH_PRODUCTS_ERROR':
       return {
         ...state,
