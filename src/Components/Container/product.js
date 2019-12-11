@@ -7,34 +7,36 @@ import fetchProductsAction from '../../Apis/apis';
 import Loader from 'react-loader-spinner';
 import { stringify } from 'querystring';
 import { Card, CardDeck } from 'react-bootstrap';
-import Pagination from 'react-bootstrap/Pagination'
+import Pagination from 'react-bootstrap/Pagination';
+import ProductItem from './productItems';
 
 class ProductView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            active: 1
+            active: 1,
+            data: []
         }
     }
 
     componentDidMount() {
         const { fetchProducts } = this.props;
         fetchProducts();
+
     }
     renderPaginatePage() {
         let items = [];
         const productLength = this.props.products.length;
-        let totalPage = (productLength) % 10 === 0 ? (productLength) / 10 :((productLength) / 10) + 1  ;
+        let totalPage = (productLength) % 10 === 0 ? (productLength) / 10 : ((productLength) / 10) + 1;
         for (let i = 1; i <= totalPage; i++) {
             items.push(i);
         }
-        console.log(items)
         return (
             <Pagination>
                 <Pagination.First />
                 <Pagination.Prev />
                 {
-                    items.map((item,idx) => {return(<Pagination.Item size="lg" key={idx}>{item}</Pagination.Item>)})
+                    items.map((item, idx) => { return (<Pagination.Item size="lg" key={idx}>{item}</Pagination.Item>) })
                 }
                 <Pagination.Next />
                 <Pagination.Last />
@@ -42,28 +44,27 @@ class ProductView extends React.Component {
     }
     render() {
         const { pending, products, error } = this.props;
+        let groups_products;
         if (pending || products.length == 0) return <Loader type="Bars" color="#00BFFF" height={80} width={80} />
         if (error) return <span className='product-list-error'>{error}</span>
+        if (products.length > 0) {
+            let product_size = Math.floor(products.length / 7);
+            groups_products = products.map(function (item, idx) {
+                return idx % product_size === 0 ? products.slice(idx, idx + product_size) : null;
+            }).filter((item) => item);
+            console.log(groups_products)
+        }
         return (
             <>
                 <div className='product-list-wrapper'>
-                    <CardDeck>
-                        {products.length > 0 && products.map((item, idx) => idx < 6 &&
-                            <Card style={{ margin: '10px', minWidth: '310px' }} key={idx}>
-                                <Card.Img variant="top" src={item.img_url} />
-                                <Card.Body>
-                                    <Card.Title>Card title</Card.Title>
-                                    <Card.Text>
-                                        This is a wider card with supporting text below as a natural lead-in to
-                                        additional content. This content is a little bit longer.
-                                        </Card.Text>
-                                </Card.Body>
-                                <Card.Footer>
-                                    <small className="text-muted">Last updated 3 mins ago</small>
-                                </Card.Footer>
-                            </Card>
-                        )}
-                    </CardDeck>
+                    {groups_products.map((items, idx) => (
+                        <div key={idx} className="col-md-12">
+                            <CardDeck>
+                                <ProductItem items={items} />
+                            </CardDeck>
+
+                        </div>
+                    ))}
                 </div>
                 {this.renderPaginatePage()}
             </>

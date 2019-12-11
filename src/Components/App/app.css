@@ -1,18 +1,18 @@
 body{
     font-size: 14px;
-    color:#fff!important;
 }
-a{
+navbar a{
     position: relative;
     overflow: hidden;
     color:#fff!important;
 }
-a:hover{
+navbar a:hover, nav a{
     text-decoration: none!important;
     color: #ffc107!important;
 }
-nav {
+nav , nav a{
     background-color: #e5101d;
+    color:#fff!important;
 }
 .dropdown a, .dropdown-menu a{
     background-color: #fff!important;
@@ -49,56 +49,15 @@ nav {
 .my-btn span:hover{
     color: #000;
 }
-.dropdown-menu a:after {
-    display: block;
-    position: absolute;
-    margin: 0;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    content: '.';
-    color: transparent;
-    width: 1px;
-    height: 1px;
-    border-radius: 50%;
-    background: transparent;
-}
 button:hover{
     background:none!important;
     color:#ffc107dc!important;
 }
 
-.dropdown-menu a:hover:after {
+.dropdown-menu a:hover {
     color: #e5101ed5!important;
-    -webkit-animation: circle 1.5s ease-in forwards;
+    background: #aaa!important;
 }
-@-webkit-keyframes circle {
-    0% {
-      width: 1px;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      margin: auto;
-      height: 1px;
-      z-index: -1;
-      background: #eee;
-      border-radius: 100%;
-    }
-    100% {
-      background: #aaa;
-      height: 5000%;
-      width: 5000%;
-      z-index: -1;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: auto;
-      border-radius: 0;
-    }
-  }
 .NavDropdownItem{
     display: block;
     width: 100%;
