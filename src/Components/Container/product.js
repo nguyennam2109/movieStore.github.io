@@ -48,7 +48,7 @@ class ProductView extends React.Component {
         if (pending || products.length == 0) return <Loader type="Bars" color="#00BFFF" height={80} width={80} />
         if (error) return <span className='product-list-error'>{error}</span>
         if (products.length > 0) {
-            let product_size = Math.floor(products.length / 5);
+            let product_size = Math.floor(products.length / 7);
             groups_products = products.map(function (item, idx) {
                 return idx % product_size === 0 ? products.slice(idx, idx + product_size) : null;
             }).filter((item) => item);
@@ -57,7 +57,7 @@ class ProductView extends React.Component {
             <>
                 <div className='product-list-wrapper' style={{backgroundColor:'#fff'}}>
                     {groups_products.map((items, idx) => idx < 2 &&(
-                        <div key={idx} className="col-md-12">
+                        <div key={idx} className="col-lg-12 col-md-12 col-sm-12 ">
                             <CardDeck style={{margin:'5px'}}>
                                 <ProductItem items={items} />
                             </CardDeck>

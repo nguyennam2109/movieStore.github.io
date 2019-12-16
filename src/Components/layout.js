@@ -17,13 +17,14 @@ import Home from './Home/home';
 import Footer from './Footer/footer';
 import Detail from './Detail/Detail';
 import Cart from './ShoppingCart/shoppingCart';
+import { getTotal,getAllProducts } from "../Reducers/rootReducer";
 
 class App extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
-        console.log("layout",this.props)
+        console.log("layoutState",this.props)
         return (
             <Container>
                 <Router>
@@ -47,7 +48,7 @@ class App extends React.Component {
                             </Form>
                             <ButtonToolbar>
 
-                                <Link className="my-btn" to="/cart"><FontAwesomeIcon icon={faShoppingCart} style={{ fontSize: '14px' }} /> Giỏ Hàng <span> 0 </span></Link>
+                                <Link className="my-btn" to="/cart"><FontAwesomeIcon icon={faShoppingCart} style={{ fontSize: '14px' }} /> Giỏ Hàng <span> {this.props.total} </span></Link>
                             </ButtonToolbar>
 
                         </Nav>
@@ -105,9 +106,14 @@ class App extends React.Component {
         );
     }
 }
+const getSingleProduct = (arr,productID) => arr.find(item =>item.product_id === productID)
 const mapStateToProps = state => {
+    const {cart, products} = state;
+    const cartContainer = cart.map(id => getSingleProduct(products.products, id))
     return { 
-    ...state
+        ...state,
+        total: cartContainer.length || 0,
+        cartContainer: cartContainer
     }
 }
 const mapDispatchToProps = dispatch => ({

@@ -1,5 +1,6 @@
 console.log("Call REDUCER")
-import { FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR } from '../Actions/commonActions';
+import { FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, ADD_TO_CART } from '../Actions/commonActions';
+import { stat } from 'fs';
 
 const initialState = {
   pending: false,
@@ -23,16 +24,15 @@ export default (state = initialState, action) => {
         pending: false,
         products: action.payload
       }
-      // return Object.assign({
-      //     ...state,
-      //     pending: false,
-      //     products: action.payload
-      //   })
     case 'FETCH_PRODUCTS_ERROR':
       return {
         ...state,
         pending: false,
         error: action.error
+      }
+    case 'ADD_TO_CART':
+      return {
+        ...state
       }
     default:
       return state

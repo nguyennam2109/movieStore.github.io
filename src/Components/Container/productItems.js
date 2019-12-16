@@ -15,12 +15,11 @@ class productItems extends React.Component {
         this.props.addToCart(id);
     }
     render() {
-        console.log(this.props)
         const { items } = this.props;
         return (
             <>
                 {items.map((item, idx) => (
-                    <Card className="col-md-4" id={item.product_id} key={idx}>
+                    <Card className="col-lg-4 col-md-4 col-sm-4" id={item.product_id} key={idx}>
                         <Card.Img variant="top" src={item.img_url} />
                         <Card.Body>
                             <Card.Title style={{ fontSize: '13px' }}>{item.name}</Card.Title>
@@ -43,7 +42,7 @@ class productItems extends React.Component {
     }
 }
 const mapStateToProps = (state) =>{
-    console.log(state)
+    console.log("productItems",state)
     return {
         ...state
     }

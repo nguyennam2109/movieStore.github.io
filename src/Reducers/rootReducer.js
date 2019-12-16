@@ -1,8 +1,8 @@
 console.log("Call Root Reducer")
 import { combineReducers } from 'redux';
-import Reducer from './reducer';
-import cartReducer from './cartReducer';
+import products from './products';
+import cart from './cart';
 export default combineReducers({
-    products: Reducer,
-    cart: cartReducer
+    products: products,
+    cart: cart
 });
