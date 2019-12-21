@@ -8,6 +8,7 @@ import {generateUniqueId} from '../../Actions/commonActions';
 import Banner1 from '../Assets/images/banner1.jpg';
 import Banner2 from '../Assets/images/banner2.jpg';
 import Banner3 from '../Assets/images/banner3.jpg';
+import Coupon from '../Assets/images/ChristmasCoupon.png';
 class Slider extends React.Component {
     constructor(props) {
         super(props);
@@ -18,8 +19,8 @@ class Slider extends React.Component {
     render() {
         let dataImages = [{image: Banner1},{image: Banner2},{image: Banner3}]
         return (
-            <>
-                <Carousel>
+            <div className="slider-wrapper" style={{display:'flex'}}>
+                <Carousel style={{flex:'1 0 44%'}}>
              
                     {
                         dataImages.map((item, pos) => {
@@ -36,10 +37,11 @@ class Slider extends React.Component {
                             </Carousel.Item>)
                         })
                     }
-
-
                 </Carousel>
-            </>
+                <div className="coupon-event"  style={{flex:'1 0 20%'}}>
+                    <img src={Coupon} style={{flex:'1 0 20%',width:'100%'}}/>
+                </div>
+            </div>
         );
     }
 }

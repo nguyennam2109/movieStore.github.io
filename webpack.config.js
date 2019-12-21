@@ -40,6 +40,10 @@ module.exports = {
     node: {
         fs: 'empty'
     },
+    devServer: {
+        publicPath: '/',
+        historyApiFallback: true,
+    },
     target: 'web',
     plugins: [htmlPlugin
         , new Dotenv()

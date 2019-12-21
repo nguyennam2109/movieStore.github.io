@@ -16,7 +16,7 @@ class Home extends React.Component {
     return (
       <>
         <Slider />
-        <h2>This Is Home</h2>
+        <h2>Sản Phẩm Bán Chạy</h2>
         <ProductView />
       </>
     );

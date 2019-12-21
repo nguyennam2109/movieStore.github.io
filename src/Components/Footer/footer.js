@@ -9,77 +9,63 @@ class Footer extends React.Component {
 
     render() {
         return (
-            <footer className="page-footer font-small indigo dark-4" >
+            <footer className="page-footer font-small indigo light-4" >
                 <div className="container text-center text-md-left">
                     <div className="row">
                         <div className="col-md-3 mx-auto">
-                            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+                            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Địa chỉ văn phòng:</h5>
                             <ul className="list-unstyled">
                                 <li>
-                                    <a href="#!">Very long link 1</a>
+                                    <p href="#!">Phường 4, quận 7, thành phố Hồ Chí Minh</p>
                                 </li>
                                 <li>
-                                    <a href="#!">Very long link 2</a>
+                                    <p href="#!">Nhận đặt hàng trực tuyến và giao hàng tận nơi, chưa hỗ trợ mua và nhận hàng trực tiếp tại văn phòng hoặc trung tâm xử lý đơn hàng</p>
                                 </li>
-                                <li>
-                                    <a href="#!">Very long link 3</a>
-                                </li>
-                                <li>
-                                    <a href="#!">Very long link 4</a>
-                                </li>
+                                
                             </ul>
                         </div>
                         <div className="col-md-3 mx-auto">
-                            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+                            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Chính sách:</h5>
                             <ul className="list-unstyled">
                                 <li>
-                                    <a href="#!">Link 1</a>
+                                    <p href="#!">Hotline đặt hàng: 1900-6035</p>
                                 </li>
                                 <li>
-                                    <a href="#!">Link 2</a>
-                                </li>
-                                <li>
-                                    <a href="#!">Link 3</a>
-                                </li>
-                                <li>
-                                    <a href="#!">Link 4</a>
+                                    <p href="#!">Hotline chăm sóc khách hàng: 1900-6035</p>
                                 </li>
                             </ul>
                         </div>
                         <hr className="clearfix w-100 d-md-none" />
                         <div className="col-md-3 mx-auto">
-                            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+                            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Kết nối với chúng tôi:</h5>
 
                             <ul className="list-unstyled">
                                 <li>
-                                    <a href="#!">Link 1</a>
+                                    <a href="#!">Facebook</a>
                                 </li>
                                 <li>
-                                    <a href="#!">Link 2</a>
+                                    <a href="#!">Youtube</a>
                                 </li>
                                 <li>
-                                    <a href="#!">Link 3</a>
-                                </li>
-                                <li>
-                                    <a href="#!">Link 4</a>
+                                    <a href="#!">Zalo</a>
                                 </li>
                             </ul>
                         </div>
                         <div className="col-md-3 mx-auto">
-                            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+                            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Về chúng tôi:</h5>
 
                             <ul className="list-unstyled">
                                 <li>
-                                    <a href="#!">Link 1</a>
+                                    <p href="#!">Chính sách</p>
                                 </li>
                                 <li>
-                                    <a href="#!">Link 2</a>
+                                    <p href="#!">Hướng dẫn đặt hàng</p>
                                 </li>
                                 <li>
-                                    <a href="#!">Link 3</a>
+                                    <p href="#!">Liên kết vận chuyển</p>
                                 </li>
                                 <li>
-                                    <a href="#!">Link 4</a>
+                                    <p href="#!">Hỗ trợ: support@doiqua.vn</p>
                                 </li>
                             </ul>
                         </div>
