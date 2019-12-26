@@ -1,6 +1,9 @@
 body{
-    font-size: 14px;
     background: #aaaaaa6b!important;
+    margin-bottom: 10px;
+    color: rgb(51, 51, 51);
+    font-size: 18px;
+    font-weight: 400;
 }
 navbar a{
     position: relative;

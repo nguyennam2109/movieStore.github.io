@@ -1,0 +1,36 @@
+.single-banner {
+    margin-top: 10px;
+    padding: 0;
+    position: relative;
+}
+.single-banner img{
+    width: 100%;
+    
+}
+.single-banner .banner-content{
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    
+}
+.right{
+    right: 35px;
+}
+.left{
+    left: 35px;
+}
+.single-banner .banner-content h1{
+    font-size: 40px;
+    line-height: 44px;
+    font-weight: 700;
+    margin-bottom: 23px;
+    color: #fff;
+}
+.single-banner .banner-content h1 Span {
+    font-size: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}

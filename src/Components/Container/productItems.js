@@ -11,7 +11,7 @@ class productItems extends React.Component {
     constructor(props) {
         super(props);
     }
-    handleClick = (id) => {
+    handleAddtoCart = (id) => {
         this.props.addToCart(id);
     }
     render() {
@@ -31,7 +31,7 @@ class productItems extends React.Component {
                         </Card.Body>
                         <Card.Footer>
                             <ButtonToolbar>
-                                <Button variant="outline-danger" onClick={() => { this.handleClick(item.id) }}><FontAwesomeIcon icon={faShoppingCart} style={{ fontSize: '14px' }} /> Thêm Giỏ Hàng!</Button>
+                                <Button variant="outline-danger" onClick={() => { this.handleAddtoCart(item.id) }}><FontAwesomeIcon icon={faShoppingCart} style={{ fontSize: '14px' }} /> Thêm Giỏ Hàng!</Button>
                             </ButtonToolbar>
                         </Card.Footer>
                     </Card>

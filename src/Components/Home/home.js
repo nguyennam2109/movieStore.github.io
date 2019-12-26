@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 
 
-
+import { Container } from 'react-bootstrap';
 import Slider from './slider';
 import ProductView from '../Container/product';
 
@@ -14,11 +14,11 @@ class Home extends React.Component {
 
   render() {
     return (
-      <>
+      <Container>
         <Slider />
         <h2>Sản Phẩm Bán Chạy</h2>
         <ProductView />
-      </>
+      </Container>
     );
   }
 }

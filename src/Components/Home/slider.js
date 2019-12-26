@@ -5,10 +5,11 @@ import { Carousel } from 'react-bootstrap';
 // import {generateUniqueId} from '../Helper/common';
 import {generateUniqueId} from '../../Actions/commonActions';
 
-import Banner1 from '../Assets/images/banner1.jpg';
-import Banner2 from '../Assets/images/banner2.jpg';
-import Banner3 from '../Assets/images/banner3.jpg';
+import slideImg1 from '../Assets/images/banner1.jpg';
+import slideImg2 from '../Assets/images/banner2.jpg';
+import slideImg3 from '../Assets/images/banner3.jpg';
 import Coupon from '../Assets/images/ChristmasCoupon.png';
+import Banner from './banner';
 class Slider extends React.Component {
     constructor(props) {
         super(props);
@@ -17,10 +18,11 @@ class Slider extends React.Component {
         
     }
     render() {
-        let dataImages = [{image: Banner1},{image: Banner2},{image: Banner3}]
+        let dataImages = [{image: slideImg1},{image: slideImg2},{image: slideImg3}]
         return (
+            <>
             <div className="slider-wrapper" style={{display:'flex'}}>
-                <Carousel style={{flex:'1 0 44%'}}>
+                <Carousel indicators={false} style={{flex:'1 0 44%'}}>
              
                     {
                         dataImages.map((item, pos) => {
@@ -42,6 +44,10 @@ class Slider extends React.Component {
                     <img src={Coupon} style={{flex:'1 0 20%',width:'100%'}}/>
                 </div>
             </div>
+            <Banner/>
+            </>
+            
+            
         );
     }
 }

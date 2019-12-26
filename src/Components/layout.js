@@ -17,18 +17,18 @@ import Home from './Home/home';
 import Footer from './Footer/footer';
 import Detail from './Detail/Detail';
 import Cart from './ShoppingCart/shoppingCart';
-import { getTotal,getAllProducts } from "../Reducers/rootReducer";
+import { getTotal, getAllProducts } from "../Reducers/rootReducer";
 
 class App extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
-        console.log("layoutState",this.props)
+        console.log("layoutState", this.props)
         return (
-            <Container>
-                <Router>
-                    <Navbar collapseOnSelect expand="lg" className='justify-content-between' >
+            <Router>
+                <Navbar collapseOnSelect expand="lg" className='justify-content-between' >
+                    <Container>
                         <Navbar.Brand ><img src={Logo} style={{ maxWidth: '150px' }} /></Navbar.Brand>
                         <Nav>
                             <div className="group-img" style={{ marginRight: '3rem' }} >
@@ -52,10 +52,12 @@ class App extends React.Component {
                             </ButtonToolbar>
 
                         </Nav>
+                    </Container>
 
-                    </Navbar>
-                    <Navbar collapseOnSelect expand="lg" >
 
+                </Navbar>
+                <Navbar collapseOnSelect expand="lg" >
+                    <Container style={{ position: 'relative'}}>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
 
@@ -74,7 +76,7 @@ class App extends React.Component {
                                     <Button variant="outline-warning" style={{ margin: '5px' }}><Link to="/shoppingCart"><FontAwesomeIcon icon={faCartPlus} style={{ fontSize: '14px' }} /> Sản Phẩm Tùy Chọn!</Link></Button>
                                 </ButtonToolbar>
                             </Nav>
-                            <Form inline style={{ position: 'absolute',right:'0' }}>
+                            <Form inline style={{ position: 'absolute', right: '0' }}>
                                 <ButtonToolbar>
                                     <Button variant="outline-warning" style={{ margin: '5px' }}><Link to="/shoppingCart"><FontAwesomeIcon icon={faBell} style={{ fontSize: '14px' }} /> Thông Báo</Link></Button>
                                 </ButtonToolbar>
@@ -84,31 +86,32 @@ class App extends React.Component {
                             </Form>
 
                         </Navbar.Collapse>
-                    </Navbar>
+                    </Container>
 
-                    <Switch>
+                </Navbar>
 
-                        <Route path="/detail">
-                            <Detail />
-                        </Route>
-                        <Route path="/cart">
-                            <Cart />
-                        </Route>
-                        <Route path="/">
-                            <Home />
-                        </Route>
-                    </Switch>
-                    <Footer />
-                </Router>
-            </Container>
+                <Switch>
+
+                    <Route path="/detail">
+                        <Detail />
+                    </Route>
+                    <Route path="/cart">
+                        <Cart />
+                    </Route>
+                    <Route path="/">
+                        <Home />
+                    </Route>
+                </Switch>
+                <Footer />
+            </Router>
         );
     }
 }
-const getSingleProduct = (arr,productID) => arr.find(item =>item.product_id === productID)
+const getSingleProduct = (arr, productID) => arr.find(item => item.product_id === productID)
 const mapStateToProps = state => {
-    const {cart, products} = state;
+    const { cart, products } = state;
     const cartContainer = cart.map(id => getSingleProduct(products.products, id))
-    return { 
+    return {
         ...state,
         total: cartContainer.length || 0,
         cartContainer: cartContainer

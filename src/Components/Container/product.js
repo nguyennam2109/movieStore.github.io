@@ -43,7 +43,8 @@ class ProductView extends React.Component {
             </Pagination>);
     }
     render() {
-        const { pending, products, error } = this.props;
+        console.log(this.props)
+        const { productDetail ,pending, products, error } = this.props;
         let groups_products;
         if (pending || products.length == 0) return <Loader type="Bars" color="#00BFFF" height={80} width={80} />
         if (error) return <span className='product-list-error'>{error}</span>
@@ -53,10 +54,12 @@ class ProductView extends React.Component {
                 return idx % product_size === 0 ? products.slice(idx, idx + product_size) : null;
             }).filter((item) => item);
         }
+        const sizeItems = !productDetail ? 2 :  products.length;
+        console.log(groups_products)
         return (
             <>
                 <div className='product-list-wrapper' style={{backgroundColor:'#fff'}}>
-                    {groups_products.map((items, idx) => idx < 2 &&(
+                    {groups_products.map((items, idx) => idx < sizeItems && (
                         <div key={idx} className="col-lg-12 col-md-12 col-sm-12 ">
                             <CardDeck style={{margin:'5px'}}>
                                 <ProductItem items={items} />
