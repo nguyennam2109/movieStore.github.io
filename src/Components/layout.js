@@ -16,8 +16,9 @@ import GiftPack from './Assets/images/gift-pack.png';
 import Home from './Home/home';
 import Footer from './Footer/footer';
 import Detail from './Detail/Detail';
+import Product from './Container/singleProduct';
 import Cart from './ShoppingCart/shoppingCart';
-import { getTotal, getAllProducts } from "../Reducers/rootReducer";
+import { getCartProducts } from "../Reducers/rootReducer";
 
 class App extends React.Component {
     constructor(props) {
@@ -48,7 +49,7 @@ class App extends React.Component {
                             </Form>
                             <ButtonToolbar>
 
-                                <Link className="my-btn" to="/cart"><FontAwesomeIcon icon={faShoppingCart} style={{ fontSize: '14px' }} /> Giỏ Hàng <span> {this.props.total} </span></Link>
+                                <Link className="my-btn" to="/cart"><FontAwesomeIcon icon={faShoppingCart} style={{ fontSize: '14px' }} /> Giỏ Hàng <span> {this.props.productCart.length||0} </span></Link>
                             </ButtonToolbar>
 
                         </Nav>
@@ -95,6 +96,9 @@ class App extends React.Component {
                     <Route path="/detail">
                         <Detail />
                     </Route>
+                    <Route path="/product">
+                        <Product />
+                    </Route>
                     <Route path="/cart">
                         <Cart />
                     </Route>
@@ -107,14 +111,11 @@ class App extends React.Component {
         );
     }
 }
-const getSingleProduct = (arr, productID) => arr.find(item => item.product_id === productID)
 const mapStateToProps = state => {
     const { cart, products } = state;
-    const cartContainer = cart.map(id => getSingleProduct(products.products, id))
     return {
         ...state,
-        total: cartContainer.length || 0,
-        cartContainer: cartContainer
+        productCart: getCartProducts(state)
     }
 }
 const mapDispatchToProps = dispatch => ({

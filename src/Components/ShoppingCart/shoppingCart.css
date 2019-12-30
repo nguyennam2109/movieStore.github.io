@@ -12,3 +12,26 @@
 .empty-cart p{
     padding: 20px;
 }
+tr:hover{
+    border-top: 1px solid #7777771f;
+    -webkit-box-shadow: 1px 2px 10px 1px #777;
+	-moz-box-shadow: 1px 2px 10px 1px #777;
+	box-shadow: 1px 2px 10px 1px #777;
+}
+.input-group-btn{
+    border: 1px solid #77777761;
+    margin:0;
+}
+.touchspin-down{
+    border-right: 1px solid #77777761;
+}
+.touchspin-up{
+    border-left:1px solid #77777761;
+}
+.bootstrap-touchspin input{
+    padding-right: 5px;
+    padding-left: 5px;
+    text-align: center;
+    border-radius: 0;
+    width: 20px;
+}

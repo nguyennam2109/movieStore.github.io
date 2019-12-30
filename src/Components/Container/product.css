@@ -3,12 +3,14 @@
 }
 .product-list-wrapper .card{
     margin-right: 0;
-    cursor: pointer;
     border: 1px solid #fff;
     box-shadow: 0 0.5px 0 0 #ffffff inset, 0 1px 2px 0 rgb(252, 245, 245);
 }
 .product-list-wrapper .card:hover{
     box-shadow: 0 0.5px 0 0 #ffffff inset, 0 1px 2px 0 rgb(172, 165, 165);
+}
+.cart-body-container:hover{
+    border:1px solid #fff!important
 }
 /* star rate */
 .card-body{
@@ -53,4 +55,37 @@
 .rating span.checked ~ span label,.rating input:checked + label {
     background:#F90;
     color:#FFF;
+}
+
+
+
+.price-block .price-label{
+    margin: 19px 0 2px;
+    font-size: 13px;
+    color: #9b9b9b;
+    font-weight: 300;
+}
+.price-block span{
+    color: #ff3425;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 18px;
+}
+.tiki-product .wrap .item-box .item-row1 .item-price .top-feature-item, .report {
+    margin-top: 10px;
+    padding-top: 10px;
+    margin-right: 26px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ececec;
+}
+
+.bullet-wrap>p, .report {
+    padding: 0 0 0 20px!important;
+    margin: 0 0 5px;
+    font-size: 13px;
+    position: relative;
+    font-weight: 16px;
+}
+.report{
+    margin:0;
 }

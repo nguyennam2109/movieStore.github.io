@@ -55,7 +55,6 @@ class ProductView extends React.Component {
             }).filter((item) => item);
         }
         const sizeItems = !productDetail ? 2 :  products.length;
-        console.log(groups_products)
         return (
             <>
                 <div className='product-list-wrapper' style={{backgroundColor:'#fff'}}>

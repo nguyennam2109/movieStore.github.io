@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {
+    Link,
+    withRouter 
+} from "react-router-dom";
 import { addToCart } from '../../Actions/commonActions'
 import { bindActionCreators } from 'redux';
 import { Card, CardDeck } from 'react-bootstrap';
-import { numberWithCommas } from '../Helper/common';
+import { numberWithCommas, convertToSlug } from '../Helper/common';
 import { Button, ButtonToolbar } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+const location = {
+    pathname: '/product',
+    state: { fromDashboard: true }
+  }
+
 class productItems extends React.Component {
     constructor(props) {
         super(props);
@@ -14,13 +23,18 @@ class productItems extends React.Component {
     handleAddtoCart = (id) => {
         this.props.addToCart(id);
     }
+    handleClick = (name) => {
+        this.props.history.push('/product/' + convertToSlug(name));
+    }
     render() {
         const { items } = this.props;
+        
         return (
             <>
                 {items.map((item, idx) => (
-                    <Card className="col-lg-4 col-md-4 col-sm-4" id={item.product_id} key={idx}>
-                        <Card.Img variant="top" src={item.img_url} />
+                    <Card className="col-lg-4 col-md-4 col-sm-4" id={item.product_id} key={idx} tag="a"   style={{ cursor: "pointer" }}>
+                        <Card className="cart-body-container" onClick={() => { this.handleClick(item.name) }} >
+                        <Card.Img variant="top" src={item.img_url}  />
                         <Card.Body>
                             <Card.Title style={{ fontSize: '13px' }}>{item.name}</Card.Title>
                             <Card.Text>
@@ -29,8 +43,9 @@ class productItems extends React.Component {
                             </Card.Text>
 
                         </Card.Body>
+                        </Card>
                         <Card.Footer>
-                            <ButtonToolbar>
+                            <ButtonToolbar >
                                 <Button variant="outline-danger" onClick={() => { this.handleAddtoCart(item.id) }}><FontAwesomeIcon icon={faShoppingCart} style={{ fontSize: '14px' }} /> Thêm Giỏ Hàng!</Button>
                             </ButtonToolbar>
                         </Card.Footer>
@@ -42,7 +57,6 @@ class productItems extends React.Component {
     }
 }
 const mapStateToProps = (state) =>{
-    console.log("productItems",state)
     return {
         ...state
     }
@@ -50,8 +64,4 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = dispatch => ({
     addToCart: (id) => dispatch(addToCart(id))
 })
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(productItems);
+export default  withRouter(connect(mapStateToProps,mapDispatchToProps)(productItems));

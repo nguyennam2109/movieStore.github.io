@@ -18,4 +18,10 @@ class Detail extends React.Component {
         );
     }
 }
-export default connect()(Detail);
+const mapStateToProps = state => ({
+    ...state
+  });
+const mapDispatchToProps = dispatch => ({
+    simpleAction: () => dispatch(simpleAction())
+  })
+export default connect(mapStateToProps, mapDispatchToProps)(Detail);

@@ -7,13 +7,9 @@ export default (state = initialState.addedID, action) => {
     switch (action.type) {
         case 'ADD_TO_CART':
             if (state.indexOf(action.id) !== -1) {
-                return state
+                return [...state,{quantity:initialState.quantity+=1}]
             }
             return [...state,action.id]
-        // return {
-        //     ...state,
-        //     id: action.id
-        //   }  
         default:
             return state
     }

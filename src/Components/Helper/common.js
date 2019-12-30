@@ -4,6 +4,15 @@ function generateUniqueId() {
 export function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
+
+export function convertToSlug(Text)
+{
+    return Text
+        .toLowerCase()
+        .replace(/ /g,'-')
+        .replace(/[^\w-]+/g,'')
+        ;
+}
 function Common() {
     return (
         generateUniqueId()
