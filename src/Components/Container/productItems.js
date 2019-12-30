@@ -23,8 +23,8 @@ class productItems extends React.Component {
     handleAddtoCart = (id) => {
         this.props.addToCart(id);
     }
-    handleClick = (name) => {
-        this.props.history.push('/product/' + convertToSlug(name));
+    handleClick = (id) => {
+        this.props.history.push('/product/' + id );
     }
     render() {
         const { items } = this.props;
@@ -33,7 +33,7 @@ class productItems extends React.Component {
             <>
                 {items.map((item, idx) => (
                     <Card className="col-lg-4 col-md-4 col-sm-4" id={item.product_id} key={idx} tag="a"   style={{ cursor: "pointer" }}>
-                        <Card className="cart-body-container" onClick={() => { this.handleClick(item.name) }} >
+                        <Card className="cart-body-container" onClick={() => { this.handleClick(item.product_id) }} >
                         <Card.Img variant="top" src={item.img_url}  />
                         <Card.Body>
                             <Card.Title style={{ fontSize: '13px' }}>{item.name}</Card.Title>

@@ -29,7 +29,7 @@ class shoppingCart extends React.Component {
     render() {
         const { productCart, cart } = this.props;
         console.log(productCart)
-        // if (cart.length === 0) return (<Container>{this.emptyCart()}</Container>);
+        if (!productCart || cart.length === 0) return (<Container>{this.emptyCart()}</Container>);
         return (
             <Container>
                 <div className="shopping-cart " style={{ color: '#000' }}>

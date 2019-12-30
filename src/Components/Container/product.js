@@ -46,7 +46,7 @@ class ProductView extends React.Component {
         console.log(this.props)
         const { productDetail ,pending, products, error } = this.props;
         let groups_products;
-        if (pending || products.length == 0) return <Loader type="Bars" color="#00BFFF" height={80} width={80} />
+        if (pending || products.length == 0) return <div className="loader"><Loader type="Bars" color="#00BFFF" height={80} width={80} /></div>
         if (error) return <span className='product-list-error'>{error}</span>
         if (products.length > 0) {
             let product_size = Math.floor(products.length / 7);

@@ -1,3 +1,8 @@
+.loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
 .product-list-wrapper{
     padding-top: 10px;
 }

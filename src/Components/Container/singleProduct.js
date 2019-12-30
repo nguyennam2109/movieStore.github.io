@@ -2,6 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import { connect } from 'react-redux';
 import Carousel from "../Helper/carousel";
+import { addToCart } from '../../Actions/commonActions'
 import './product.css';
 import { Container,ButtonToolbar,Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,6 +13,7 @@ class singleProduct extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <Container>
                 <div className="row">
@@ -84,6 +86,6 @@ const mapStateToProps = state => ({
     ...state
 });
 const mapDispatchToProps = dispatch => ({
-    simpleAction: () => dispatch(simpleAction())
+    addToCart: (id) => dispatch(addToCart(id))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(singleProduct);

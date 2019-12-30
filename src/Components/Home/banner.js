@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {
+    Link
+} from "react-router-dom";
 import { ButtonToolbar,Button } from 'react-bootstrap';
 import Banner1 from '../Assets/images/banner-1.jpg';
 import Banner2 from '../Assets/images/banner-2.jpg';
@@ -18,7 +21,7 @@ class Banner extends React.Component {
                         <div className="banner-content right">
                             <h1 className="white"><span>Gói Quà</span>Giáng Sinh</h1>
                             <ButtonToolbar>
-                                <Button variant="danger" size="lg" active> Mua Ngay!</Button>
+                                <Button variant="danger" size="lg" active><Link to="/detail" style={{color:'#fff'}}> Mua Ngay!</Link> </Button>
                             </ButtonToolbar>
                         </div>
                     </div>
@@ -29,7 +32,7 @@ class Banner extends React.Component {
                         <div className="banner-content left">
                             <h1 className="white"><span>Gói Quà</span>Giáng Sinh</h1>
                             <ButtonToolbar>
-                                <Button variant="danger" size="lg" active> Mua Ngay!</Button>  
+                                <Button variant="danger" size="lg" active> <Link to="/detail"style={{color:'#fff'}}> Mua Ngay!</Link></Button>  
                             </ButtonToolbar>
                         </div>
                     </div>
